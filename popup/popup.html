@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobFill</title>
+    <link rel="stylesheet" href ="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JobFill</h1>
+            <p>Autofill job Applications with your resume</p>
+        </header>
+
+        <div id = "initial-setup" class = "section">
+            <h2>Upload Your Resume</h2>
+            <p>Upload your resume to extract your information.</p>
+            <div class = "upload-area">
+                <input type="file" id="resume-upload" accept=".pdf,.docx,.doc">
+                <label for="resume-upload"> Choose file or drag here </label>
+                <p class="file-info"> Supported formats : PDF, DOCX, DOC</p>
+            </div>
+            <button id="parse-resume" type="button" class ="primary-button" disabled>Parse Resume</button>
+        </div>
+
+        <div id="resume-data" class="section hidden">
+            <h2>Resume Data</h2>
+            <div class = 'tabs'>
+                <button class="tab-button active" data-tab="personal">Personal</button>
+                <button class="tab-button" data-tab="educational">Education</button>
+                <button class="tab-button" data-tab="experience">Experience</button>
+                <button class="tab-button" data-tab="skills">Skills</button>
+            </div>
+
+            <!-- Personal fields -->
+            <div id="personal-tab" class="tab-content">
+                <div class="form-group">
+                    <label for="full-name">Full name</label>
+                    <input type="text" id="full-name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address">
+                </div>
+            </div>
+
+            <div id="education-tab" class="tab-content-hidden">
+            <!--Education fields with add/remove functionality -->
+              <div id="education-list"></div>
+                <button id="add-education" class="secondary-button">+ Add Education</button>
+            </div>
+
+            <div id="experience-tab" class="tab-content-hidden">
+                <!--Experience fields with add/remove functionality -->
+                <div id="experience-list"></div>
+                <button id="add-experience" class="secondary-button">+ Add Experience</button>
+            </div>
+
+            <div id="skills-tab" class = "tab-content hidden">
+                <!-- Skills fields-->
+                <div class="form-group">
+                    <label for="skills"> Skills (comma seperated)</label>
+                    <textarea id="skills" rows="4"></textarea>
+                    </div>
+            </div>
+                <button id="save-data" class="primary-button">Save Data</button>
+        </div>
+
+
+        <div id="autofill-controls" class="section-hidden">
+            <h2>Auto-fill Settings</h2>
+            <div class = "toggle-group">
+                <label for="autofill-enabled"> Enable Autofill</label>
+                <label class="switch">
+                    <input type="checkbox" id="autofill-enabled" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class = "toggle-group">
+                <label for="highlight-uncertain">Highlight uncertain fields</label>
+                <label class="switch">
+                    <input type="checkbox" id="highlight-uncertain" checked>
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <button id="fill-current-page" class="primary-button">Fill Current Page</button>
+        </div>
+
+    <footer>
+        <button id="reset-data" class="text-button">Reset Data</button>
+    </footer>
+    </div>
+
+    <script src="popup.js"></script>
+
+</body>
+</html>
